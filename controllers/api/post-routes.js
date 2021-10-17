@@ -1,15 +1,15 @@
 const router = require("express").Router();
-const { Blog, User, Comment } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require('../../utils/auth');
 
-// get all Blogs
+// get all Posts
 router.get("/", (req, res) => {
   console.log("======================");
-  Blog.findAll({
+  Post.findAll({
     attributes: [
       "id",
-      "blog_content",
+      "post_content",
       "title",
       "created_at",
     ],
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -29,29 +29,29 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbBlogData) => res.json(dbBlogData))
+    .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-// get single blog
+// get single post
 router.get("/:id", (req, res) => {
-  Blog.findOne({
+  Post.findOne({
     where: {
       id: req.params.id,
     },
     attributes: [
       "id",
-      "blog_content",
+      "post_content",
       "title",
       "created_at",
     ],
     include: [
         {
             model: Comment,
-            attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
+            attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
             include: {
               model: User,
               attributes: ["username"],
@@ -63,12 +63,12 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbBlogData) => {
-      if (!dbBlogData) {
-        res.status(404).json({ message: "No blog found with this id" });
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      res.json(dbBlogData);
+      res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);
@@ -76,26 +76,26 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// create blog
+// create post
 router.post("/", withAuth, (req, res) => {
-  Blog.create({
+  Post.create({
     title: req.body.title,
-    blog_content: req.body.blog_content,
+    post_content: req.body.post_content,
     user_id: req.session.user_id
   })
-    .then((dbBlogData) => res.json(dbBlogData))
+    .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-// update blog
+// update post
 router.put("/:id", withAuth, (req, res) => {
-  Blog.update(
+  Post.update(
     {
       title: req.body.title,
-      blog_content: req.body.blog_content
+      post_content: req.body.post_content
     },
     {
       where: {
@@ -103,12 +103,12 @@ router.put("/:id", withAuth, (req, res) => {
       },
     }
   )
-    .then((dbBlogData) => {
-      if (!dbBlogData) {
-        res.status(404).json({ message: "No blog found with this id" });
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      res.json(dbBlogData);
+      res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);
@@ -116,19 +116,19 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
-// delete blog
+// delete post
 router.delete("/:id", withAuth, (req, res) => {
-  Blog.destroy({
+  Post.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then((dbBlogData) => {
-      if (!dbBlogData) {
-        res.status(404).json({ message: "No blog found with this id" });
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      res.json(dbBlogData);
+      res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);
