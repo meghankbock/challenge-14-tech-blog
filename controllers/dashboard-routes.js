@@ -1,23 +1,23 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Blog, User, Comment } = require("../models");
+const { Post, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, (req, res) => {
-  Blog.findAll({
+  Post.findAll({
     where: {
       user_id: req.session.user_id,
     },
     attributes: [
       "id",
-      "blog_content",
+      "post_content",
       "title",
       "created_at",
     ],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -29,10 +29,10 @@ router.get("/", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbBlogData) => {
+    .then((dbPostData) => {
       // serialize data before passing to template
-      const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
-      res.render("dashboard", { blogs, loggedIn: true });
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render("dashboard", { posts, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -41,17 +41,17 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-    Blog.findByPk(req.params.id, {
+  Post.findByPk(req.params.id, {
       attributes: [
         'id',
-        'blog_content',
+        'post_content',
         'title',
         'created_at',
       ],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -63,12 +63,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
         }
       ]
     })
-      .then(dbBlogData => {
-        if (dbBlogData) {
-          const blog = dbBlogData.get({ plain: true });
+      .then(dbPostData => {
+        if (dbPostData) {
+          const post = dbPostData.get({ plain: true });
           
-          res.render('edit-blog', {
-            blog,
+          res.render('edit-post', {
+            post,
             loggedIn: true
           });
         } else {
