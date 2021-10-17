@@ -7,8 +7,8 @@ const seedData = async () => {
   const userData = [];
 
   for (let i = 0; i < 50; i += 1) {
-    const username = faker.internet.userName(firstName, lastName);
-    const email = faker.internet.email(firstName, lastName);
+    const username = faker.internet.userName();
+    const email = faker.internet.email(username);
     const password = faker.internet.password();
     userData.push({ username, email, password });
   }
@@ -24,7 +24,7 @@ const seedData = async () => {
     const post_content = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
-    const { id: user_id } = createdUsers[randomUserIndex];
+    const user_id = createdUsers[randomUserIndex].id;
 
     postData.push({ title, post_content, user_id });
   }
@@ -36,10 +36,10 @@ const seedData = async () => {
     const comment_text = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
-    const { id: post_id } = createdUsers[randomPostIndex];
+    const post_id = createdPosts[randomPostIndex].id;
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
-    const { id: user_id } = createdUsers[randomUserIndex];
+    const user_id = createdUsers[randomUserIndex].id;
 
     commentData.push({ comment_text, post_id, user_id });
   }
