@@ -2,7 +2,7 @@ const faker = require("faker");
 
 const { User, Post, Comment } = require("../models");
 
-const seedData = () => {
+const seedData = async () => {
   // create user data
   const userData = [];
 
