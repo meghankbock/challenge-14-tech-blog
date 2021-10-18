@@ -4,11 +4,11 @@
     <form class="new-post-form">
         <div>
             <label for="post-title">Title</label>
-            <input type="text" id="post-title" name="post-title" />
+            <input type="text" id="post-title" name="post-title" required minlength="1" maxlength="50" aria-errormessage="Title must not exceed 50 characters." required/>
         </div>
         <div>
             <label for="post-content">Content</label>
-            <textarea id="post-content" name="post-content"></textarea>
+            <textarea id="post-content" name="post-content" required minlength="1" maxlength="1000" aria-errormessage="Content must not exceed 1,000 characters." required></textarea>
         </div>
         <button type="submit" id="add-post-btn">Create</button>
     </form>

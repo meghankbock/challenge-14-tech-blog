@@ -6,11 +6,11 @@
     <form class="edit-post-form">
         <div>
             <label for="post-title">Title</label>
-            <input name="post-title" type="text" value="{{post.title}}" />
+            <input name="post-title" type="text" value="{{post.title}}" required minlength="1" maxlength="50" aria-errormessage="Title must not exceed 50 characters."/>
         </div>
         <div>
             <label for="post-content">Content</label>
-            <textarea name="post-content" value="{{post.post_content}}">{{post.post_content}}</textarea>
+            <textarea name="post-content" value="{{post.post_content}}" required minlength="1" maxlength="1000" aria-errormessage="Content must not exceed 1,000 characters.">{{post.post_content}}</textarea>
         </div>
         <span class="meta">
             by you on {{format_date post.created_at}}
@@ -24,7 +24,7 @@
     </form>
 </article>
 
-<article class="comments">
+<article class="comments-list">
     <h3>Comments ({{post.comments.length}})</h3>
 {{#if loggedIn}}
 <form class="comment-form">

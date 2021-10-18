@@ -15,13 +15,18 @@ Post.init(
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                max: 50,
+                min: 1
+            }
         },
         post_content: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                len: [1]
+                max: 1000,
+                min: 1
             }
         },
         user_id: {
