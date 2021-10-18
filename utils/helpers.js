@@ -8,5 +8,11 @@ module.exports = {
             return `${word}s`;
         }
         return word;
+    },
+
+    user_edit: (userId, postUserId) => {
+        if(userId === postUserId) {
+            return true;
+        } return false;
     }
 }

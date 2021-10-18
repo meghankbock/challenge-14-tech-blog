@@ -1,4 +1,6 @@
+<article class="post">
 {{> post-info post}}
+</article>
 
 <article class="comments">
     <h3>Comments ({{post.comments.length}})</h3>
@@ -13,7 +15,9 @@
 </form>
 {{/if}}
 
+{{#if post.comments.length}}
 {{> comments post.comments}}
+{{/if}}
 </article>
 
 

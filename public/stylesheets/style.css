@@ -2,7 +2,7 @@
   --primary: #ffffff;
   --secondary: #14fcff;
   --tertiary: #0a7e80;
-  --yellow: #D7FF08;
+  --yellow: #d7ff08;
   --light-dark: #6f6866;
   --light-gray: #d3d3d3;
   --dark: #38302e;
@@ -44,7 +44,7 @@ a:hover,
 }
 
 .app-title > a:hover {
-    color: var(--primary);
+  color: var(--primary);
 }
 
 button {
@@ -59,8 +59,8 @@ button {
 }
 
 button:hover {
-    color: var(--primary);
-  }
+  color: var(--primary);
+}
 
 h1,
 h2,
@@ -72,11 +72,20 @@ h6 {
   margin: 0;
   color: var(--dark);
   line-height: 1.25;
+  color: var(--secondary);
+}
+
+ul {
+  list-style-type: none;
 }
 
 .post-list {
   margin: 0;
   padding: 0;
+}
+
+.post-list:first-child {
+  margin-top: 2%;
 }
 
 textarea,
@@ -158,35 +167,14 @@ p {
   margin-left: 16px;
 }
 
-.btn {
-  font-size: 1.3rem;
-  text-decoration: none;
-  padding: 6px 5px;
-  width: 100%;
-  display: block;
-  margin: 5px 0;
-  border-radius: var(--border-radius);
-  color: var(--primary);
-  border: none;
-  outline: none;
-  background-color: var(--light-dark);
-  box-shadow: 3px 3px var(--dark);
-  transform: translate(-1px, -1px);
-}
-
-.btn:hover {
-  color: var(--primary);
-  background-color: var(--tertiary);
-  transform: translate(0, 0);
-  box-shadow: 2px 2px var(--dark);
-}
-
 .delete-post-btn {
-  background-color: #d41414;
+  color: #ff7c54;
+  background-color: #cc3325;
+  margin-left: 1%;
 }
 
 .delete-post-btn:hover {
-  background-color: #ff643d;
+  color: var(--primary);
 }
 
 .post h2 a {
@@ -195,8 +183,8 @@ p {
 }
 
 .post h2 a:hover {
-    color: var(--primary);
-  }
+  color: var(--primary);
+}
 
 .post .title span {
   font-size: 90%;
@@ -204,13 +192,23 @@ p {
   color: #7d7d7d;
 }
 
-.post, .comments {
+.post,
+.comments,
+.add-post,
+.edit-post {
   border: 1.5px solid var(--primary);
   margin: 0 5% 4%;
   line-height: 150%;
 }
 
-.post .title, .comments h3 {
+.edit-post {
+  margin-top: 2%;
+}
+
+.post .title,
+.comments h3,
+.add-post h2,
+.edit-post h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -229,28 +227,46 @@ p {
   color: var(--primary);
 }
 
-.post .title, .comments h3 {
+.post .title,
+.comments h3,
+.add-post h2,
+.edit-post h2 {
   background-color: var(--secondary);
   color: var(--tertiary);
 }
 
+.add-post label,
+.edit-post label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.edit-post .meta {
+  margin-bottom: 2%;
+  color: var(--primary);
+}
+
 .edit-link {
   display: block;
-  margin: -1.5% 0 2% 0;
+  padding: 1%;
 }
 
-.comment-form {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: normal;
-    padding: 1%;
-    margin: 2% 4%;
+.comment-form,
+.new-post-form,
+.edit-post-form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: normal;
+  padding: 1%;
+  margin: 2% 4%;
 }
 
-.comment-form textarea {
-    width: 100%;
+.comment-form textarea,
+.add-post textarea,
+.edit-post textarea {
+  width: 100%;
 }
 
 .comment {
@@ -258,7 +274,7 @@ p {
 }
 
 .comment:not(:last-child) {
-    border-bottom: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--secondary);
 }
 
 .comment:nth-child(odd) {
@@ -266,13 +282,17 @@ p {
 }
 
 .comment:nth-child(even) {
-    background-color: var(--light-gray);
-  }
+  background-color: var(--light-gray);
+}
 
 .comment .meta {
   font-size: 90%;
-  margin-bottom: 0.5%;
   opacity: 0.6;
+  font-style: italic;
+}
+
+.comment .text {
+  margin-bottom: 0.5%;
 }
 
 .new-post-form input {
