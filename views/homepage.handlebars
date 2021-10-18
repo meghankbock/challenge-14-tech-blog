@@ -3,10 +3,6 @@
    <ul>
        <article class="post">
             {{> post-info post }}
-            {{#if (user_edit userId post.user_id) }}
-            {{else}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-            {{/if}}
        </article>
     </ul>
     {{/each}}

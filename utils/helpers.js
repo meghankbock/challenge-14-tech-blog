@@ -11,6 +11,7 @@ module.exports = {
     },
 
     user_edit: (userId, postUserId) => {
+        console.log("userId: ", userId, " :: postUserId: ", postUserId);
         if(userId === postUserId) {
             return true;
         } return false;

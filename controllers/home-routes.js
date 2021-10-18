@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
       res.render("homepage", {
         posts,
         loggedIn: req.session.loggedIn,
-        userId: req.session.userId,
+        userId: req.session.user_id,
         singlePost: false,
       });
     })
@@ -92,7 +92,7 @@ router.get("/post/:id", (req, res) => {
       res.render("single-post", {
         post,
         loggedIn: req.session.loggedIn,
-        userId: req.session.userId,
+        userId: req.session.user_id,
         singlePost: true,
       });
     })
