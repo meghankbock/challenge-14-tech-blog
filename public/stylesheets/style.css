@@ -347,7 +347,7 @@ footer {
 }
 
 .login-container button {
-    padding: 12%;
+    padding: 2%;
 }
 
 .nav-links {
@@ -359,4 +359,9 @@ nav {
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
+}
+
+#error {
+    color: #cc3325;
+    font-size: smaller;
 }
