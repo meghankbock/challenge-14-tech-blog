@@ -1,4 +1,4 @@
-{{#if loggedIn}}
+{{#if login}}
 <div class="login-container">
 <form class="login-form">
     <h2>Log In</h2>
@@ -15,8 +15,9 @@
     </div>
 </form>
 </div>
+{{/if}}
 
-{{else}}
+{{#if signup}}
 <div class="login-container">
     <form class="signup-form">
     <h2>Sign Up</h2>
@@ -39,5 +40,10 @@
 </div>
 {{/if}}
 
+{{#if signup}}
 <script src="/javascript/signup.js"></script>
+{{/if}}
+
+{{#if login}}
 <script src="/javascript/login.js"></script>
+{{/if}}

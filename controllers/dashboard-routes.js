@@ -32,7 +32,7 @@ router.get("/", withAuth, (req, res) => {
     .then((dbPostData) => {
       // serialize data before passing to template
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      res.render("dashboard", { posts, loggedIn: true, singlePost: false });
     })
     .catch((err) => {
       console.log(err);
@@ -69,7 +69,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
           
           res.render('edit-post', {
             post,
-            loggedIn: true
+            loggedIn: true,
+            singlePost: true
           });
         } else {
           res.status(404).end();

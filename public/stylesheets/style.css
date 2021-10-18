@@ -164,7 +164,6 @@ p {
   font-size: 100%;
   font-weight: bold;
   transition: color 0.1s;
-  margin-left: 16px;
 }
 
 .delete-post-btn {
@@ -254,7 +253,8 @@ p {
 
 .edit-link {
   display: block;
-  padding: 1%;
+  padding-left: 1%;
+  padding-bottom: 1%;
 }
 
 .comment-form,
@@ -330,5 +330,28 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
+}
+
+.login-container label {
+    color: var(--primary);
+}
+
+.login-container div {
+    margin-top: 3%;
+}
+
+.login-container button {
+    padding: 12%;
+}
+
+.nav-links {
+    margin-left: 2%;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
 }

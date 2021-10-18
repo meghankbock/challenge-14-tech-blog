@@ -16,10 +16,11 @@
       </h1>
       <nav>
           {{#if loggedIn}}
-          <a href="/dashboard">dashboard</a>
-          <button id="logout-btn" class="btn-no-style">logout</button>
+          <a class="nav-links" href="/dashboard">dashboard</a>
+          <button id="logout-btn" class="btn-no-style nav-links">logout</button>
           {{else}}
-          <a href="/login">login</a>
+          <a class="nav-links" href="/login">login</a>
+          <a class="nav-links" href="/signup">sign-up</a>
           {{/if}}
       </nav>
     </header>

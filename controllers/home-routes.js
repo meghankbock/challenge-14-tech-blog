@@ -27,6 +27,7 @@ router.get("/", (req, res) => {
         posts,
         loggedIn: req.session.loggedIn,
         userId: req.session.userId,
+        singlePost: false,
       });
     })
     .catch((err) => {
@@ -40,7 +41,19 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("login");
+  res.render("login", {
+    login: true
+  });
+});
+
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login", {
+    signup: true
+  });
 });
 
 router.get("/post/:id", (req, res) => {
@@ -78,7 +91,8 @@ router.get("/post/:id", (req, res) => {
       res.render("single-post", {
         post,
         loggedIn: req.session.loggedIn,
-        userId: req.session.userId
+        userId: req.session.userId,
+        singlePost: true,
       });
     })
     .catch((err) => {
