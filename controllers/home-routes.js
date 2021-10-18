@@ -43,6 +43,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/post/:id", (req, res) => {
+  console.log("logged in: ", req.session.loggedIn);
   Post.findOne({
     where: {
       id: req.params.id,
