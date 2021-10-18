@@ -255,12 +255,19 @@ p {
 
 .comment {
   padding: 1%;
-  margin-bottom: 1%;
+}
+
+.comment:not(:last-child) {
+    border-bottom: 1px solid var(--secondary);
 }
 
 .comment:nth-child(odd) {
   background-color: #fff5eb;
 }
+
+.comment:nth-child(even) {
+    background-color: var(--light-gray);
+  }
 
 .comment .meta {
   font-size: 90%;
