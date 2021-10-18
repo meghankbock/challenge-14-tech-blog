@@ -1,8 +1,8 @@
 {{> add-post}}
 
-    <h2>Your Posts ({{posts.length}})</h2>
-    {{#if posts.length}}
     <section>
+        <h2 class="my-posts">Your Posts ({{posts.length}})</h2>
+        {{#if posts.length}}
         <ul class="post-list">
             {{#each posts as |post|}}
             <li>
@@ -13,7 +13,8 @@
             </li>
             {{/each}}
         </ul>
+        {{/if}}
     </section>
-    {{/if}}
+    
 
     <script src="/javascript/add-post.js"></script>

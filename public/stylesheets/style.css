@@ -201,6 +201,12 @@ p {
   line-height: 150%;
 }
 
+.my-posts {
+    padding: 5px;
+    margin-left: 4%;
+    margin-bottom: 1%;
+}
+
 .edit-post {
   margin-top: 2%;
 }
