@@ -6,6 +6,7 @@ router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
     attributes: ["id", "post_content", "title", "created_at"],
+    order: [[sequelize.literal("created_at DESC")]],
     include: [
       {
         model: Comment,
